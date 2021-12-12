@@ -9,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [
     new Recipe(
-      'A test recipe',
-      'test',
+      'A test recipe 1',
+      'test 1',
       'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
     ),
     new Recipe(
-      'A test recipe',
-      'test',
+      'A test recipe 2',
+      'test 2',
       'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
     ),
     new Recipe(
-      'A test recipe',
-      'test',
+      'A test recipe 3',
+      'test 3',
       'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
     ),
   ];
