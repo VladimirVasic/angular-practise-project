@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Ingredient } from '../shared/Ingredient.model';
 import { Recipe } from './recipe.model';
 
 @Injectable()
@@ -9,17 +10,14 @@ export class RecipeService {
     new Recipe(
       'A test recipe 1',
       'test 1',
-      'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
+      'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg',
+      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
     ),
     new Recipe(
       'A test recipe 2',
       'test 2',
-      'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
-    ),
-    new Recipe(
-      'A test recipe 3',
-      'test 3',
-      'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg'
+      'http://www.picadostava.rs/wp-content/uploads/2017/02/Capricoza.jpg',
+      [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
     ),
   ];
 
