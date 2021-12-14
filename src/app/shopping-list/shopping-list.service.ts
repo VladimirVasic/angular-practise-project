@@ -10,9 +10,14 @@ export class ShoppingListService {
   ];
 
   ingredientsChanged = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
 
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   addIngredient(newIngredient: Ingredient) {
@@ -22,6 +27,16 @@ export class ShoppingListService {
 
   addIngredients(newIngredients: Ingredient[]) {
     this.ingredients.push(...newIngredients);
+    this.ingredientsChanged.next(this.getIngredients());
+  }
+
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.ingredientsChanged.next(this.getIngredients());
+  }
+
+  deleteIngredient(delIdex: number) {
+    this.ingredients = this.ingredients.filter((_, index) => index != delIdex);
     this.ingredientsChanged.next(this.getIngredients());
   }
 }
