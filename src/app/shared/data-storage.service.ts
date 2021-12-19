@@ -15,7 +15,9 @@ export class DataStorageService {
         'https://ng-course-reicpe-book-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
         recipes
       )
-      .subscribe(response => console.log(response));
+      .subscribe(response => {
+        // console.log(response);
+      });
   }
 
   fetchRecipes() {

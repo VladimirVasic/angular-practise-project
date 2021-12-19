@@ -5,16 +5,32 @@ import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.com
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeResolverService } from './recipes/recipes.resolver.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  {
+    path: 'recipes',
+    loadChildren: async () =>
+      (await import('./recipes/recipes.module')).RecipesModule,
+  },
+  {
+    path: 'shopping-list',
+    loadChildren: async () =>
+      (await import('./shopping-list/shopping-list.module')).ShoppingListModule,
+  },
+  {
+    path: 'auth',
+    loadChildren: async () => (await import('./auth/auth.module')).AuthModule,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
